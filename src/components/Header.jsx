@@ -249,7 +249,7 @@ const Header = () => {
       </>
       <nav className="navbar navbar-expand-lg navbar-light sticky-top">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/freshcart">
             <img
               src={Grocerylogo}
               style={{ width: 150, marginBottom: 10, marginLeft: "-15px" }}
@@ -285,7 +285,7 @@ const Header = () => {
         <ul className="navbar-nav m4-auto mt-2 ml-4 mt-lg-0 float-md-right"></ul>
         <ul className="navbar-nav navbar-light">
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="/freshcart">
               Home
             </Link>
           </li>

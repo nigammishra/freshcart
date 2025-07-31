@@ -73,7 +73,7 @@ const App = () => {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/freshcart" element={<Home />} />
           {/* Shop pages */}
           <Route path="/Shop" element={<Shop />} />
           <Route path="/ShopGridCol3" element={<ShopGridCol3 />} />
