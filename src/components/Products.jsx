@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 // import Swal from "sweetalert2";
 import QuickViewModal from "./Model/QuickViewModal";
+import { useCart } from "../context/CartContext";
+import Swal from "sweetalert2";
+// import { Link } from "react-router-dom";
 
 import product1 from "../assets/pagesimage/home/category-snack-munchies.jpg";
 import product2 from "../assets/pagesimage/home/category-bakery-biscuits.jpg";
@@ -82,6 +85,7 @@ const products = [
 ];
 
 const ProductItem = () => {
+  const { addToCart } = useCart();
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showAll, setShowAll] = useState(false);
@@ -104,17 +108,17 @@ const ProductItem = () => {
   const visibleProducts = showAll ? products : products.slice(0, 5);
 
   useEffect(() => {
-  if (showModal) {
-    document.body.style.overflow = "hidden"; // Disable scroll
-  } else {
-    document.body.style.overflow = "auto"; // Re-enable scroll
-  }
+    if (showModal) {
+      document.body.style.overflow = "hidden"; // Disable scroll
+    } else {
+      document.body.style.overflow = "auto"; // Re-enable scroll
+    }
 
-  return () => {
-    // Cleanup on unmount
-    document.body.style.overflow = "auto";
-  };
-}, [showModal]);
+    return () => {
+      // Cleanup on unmount
+      document.body.style.overflow = "auto";
+    };
+  }, [showModal]);
 
   return (
     <section className="my-lg-14 my-8">
@@ -143,7 +147,7 @@ const ProductItem = () => {
                         alt={product.title}
                         className="mb-3 img-fluid"
                       />
-                      <div className="card-product-action" >
+                      <div className="card-product-action">
                         <button
                           className="btn-action"
                           onClick={() => handleQuickView(product)}
@@ -193,11 +197,24 @@ const ProductItem = () => {
                       </div>
                       <div>
                         <button
-                          className="btn btn-primary btn-sm"
+                          className="btn btn-primary btn-sm add-to-cart  btn-9"
                           // onClick={handleAddClick}
-                           onClick={() => handleQuickView(product)}
+                          style={{ zIndex: "999" }}
+                          // onClick={() => handleQuickView(product)}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            addToCart(product);
+                            Swal.fire({
+                              icon: "success",
+                              title: "Added to Cart",
+                              text: `${product.title} has been added to your cart.`,
+                              showConfirmButton: false,
+                              timer: 1500,
+                            });
+                          }}
                         >
-                          Add
+                          <i className="fas fa-cart-plus"></i> Add
                         </button>
                       </div>
                     </div>
@@ -211,10 +228,11 @@ const ProductItem = () => {
           <div className="text-center mt-4">
             {products.length > 4 && (
               <button
-                className="btn btn-outline-primary"
+                className="custom-btn btn-12"
                 onClick={() => setShowAll(!showAll)}
               >
-                {showAll ? "Show Less" : "Show More"}
+                <span>{showAll ? "Click!" : "Click!"}</span>
+                <span>{showAll ? "Show Less" : "Show More"}</span>
               </button>
             )}
           </div>

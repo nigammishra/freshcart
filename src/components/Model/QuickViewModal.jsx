@@ -4,15 +4,15 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 // import "./QuickViewModal.css"; // Create this for additional styles
 
 const QuickViewModal = ({ product, onClose }) => {
-  const handleAddClick = () => {
-    Swal.fire({
-      icon: "success",
-      title: "Added to Cart",
-      text: "Product has been added to your cart!",
-      showConfirmButton: true,
-      timer: 2500,
-    });
-  };
+  // const handleAddClick = () => {
+  //   Swal.fire({
+  //     icon: "success",
+  //     title: "Added to Cart",
+  //     text: "Product has been added to your cart!",
+  //     showConfirmButton: true,
+  //     timer: 2500,
+  //   });
+  // };
 
   const handleBuyNow = () => {
     Swal.fire("Redirecting to payment gateway...", "", "info");
@@ -47,9 +47,9 @@ const QuickViewModal = ({ product, onClose }) => {
                 style={{ maxHeight: "300px", objectFit: "contain" }}
               />
               <div className="mt-3">
-                <button className="btn  me-2 w-100 mb-2"style={{backgroundColor:"blue", color:"#fff", }} onClick={handleAddClick}>
+                {/* <button className="btn  me-2 w-100 mb-2"style={{backgroundColor:"blue", color:"#fff", }} onClick={handleAddClick}>
                   Add to Cart
-                </button>
+                </button> */}
                 <button className="btn  w-100" style={{backgroundColor:"Green",color:"#fff" }} onClick={handleBuyNow}>
                   Buy Now
                 </button>

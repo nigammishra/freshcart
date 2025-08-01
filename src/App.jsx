@@ -19,8 +19,8 @@ import ShopCheckOut from "./pages/shopItems/ShopComponents/ShopCheckOut.jsx";
 import ShopCart from "./pages/shopItems/ShopComponents/ShopCart.jsx";
 
 // Store pages
-import StoresDetails from "./pages/Stores/StoresDetails.jsx";
-import SingleStore from "./pages/Stores/SingleStore.jsx";
+import StoresDetails from "./pages/Storepages/StoresDetails.jsx";
+import SingleStore from "./pages/Storepages/SingleStore.jsx";
 
 // Account pages
 import OrderHistory from "./pages/settings/OrderSettings/OrderHistory.jsx";
@@ -55,13 +55,13 @@ import Home from "./pages/Home.jsx";
 
 import Bakery from "./components/category/Bakery.jsx";
 import BabyCare from "./components/category/BabyCare.jsx";
-import Berverages from "./components/category/Berverages.jsx";
+// import Berverages from "./components/category/Berverages.jsx";
 import Dairy from "./components/category/Dairy.jsx";
 import Fruits from "./components/category/Fruits.jsx";
 import Vegetables from "./components/category/Vegetables.jsx";
 import HouseHold from "./components/category/HouseHold.jsx";
 import MeatAndEggs from "./components/category/MeatAndEggs.jsx";
-import PetCare from "./components/category/PetCare.jsx";
+// import PetCare from "./components/category/PetCare.jsx";
 import Snacks from "./components/category/Snacks.jsx";
 import InstantsFood from "./components/category/InstantsFood.jsx";
 import FoodGrainAndOilAndMasala from "./components/category/FoodGrainAndOilAndMasala.jsx";
@@ -110,12 +110,12 @@ const App = () => {
 
           <Route path="/bakery" element={<Bakery />} />
           <Route path="/babyCare" element={<BabyCare />} />
-          <Route path="/berverages" element={<Berverages />} />
+          {/* <Route path="/berverages" element={<Berverages />} /> */}
           <Route path="/dairy" element={<Dairy />} />
           <Route path="/fruits" element={<Fruits />} />
           <Route path="/household" element={<HouseHold />} />
           <Route path="/meatandeggs" element={<MeatAndEggs />} />
-          <Route path="/petCare" element={<PetCare />} />
+          {/* <Route path="/petCare" element={<PetCare />} /> */}
           <Route path="/snacks" element={<Snacks />} />
           <Route path="/vegetables" element={<Vegetables />} />
           <Route path="/instantsfood" element={<InstantsFood />} />

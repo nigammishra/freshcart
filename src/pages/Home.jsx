@@ -315,7 +315,7 @@ const products = [
                             backgroundPosition: "center",
                           }}
                         >
-                          <div className="ps-lg-12 py-lg-16 col-xxl-5 col-md-7 py-14 px-8 text-xs-center" style={{zIndex:"999",marginLeft:"70px"}}>
+                          <div className="ps-lg-12 py-lg-16 col-xxl-5 col-md-7 py-14 px-8 text-xs-center" style={{zIndex:"999"}}>
                             <span className="badge text-bg-warning">
                               Opening Sale Discount 50%
                             </span>
@@ -326,10 +326,10 @@ const products = [
                               Introduced a new model for online grocery shopping
                               and convenient home delivery.
                             </p>
-                            <Link to="/shop" className="btn btn-dark mt-3" >
+                            {/* <Link to="/shop" className="btn btn-dark mt-3" >
                               Shop Now{" "}
                               <i className="feather-icon icon-arrow-right ms-1" />
-                            </Link>
+                            </Link> */}
                           </div>
                         </div>
                       </div>
@@ -342,7 +342,7 @@ const products = [
                             backgroundPosition: "center",
                           }}
                         >
-                          <div className="ps-lg-12 py-lg-16 col-xxl-5 col-md-7 py-14 px-8 text-xs-center" style={{zIndex:"999",marginLeft:"70px"}}>
+                          <div className="ps-lg-12 py-lg-16 col-xxl-5 col-md-7 py-14 px-8 text-xs-center" style={{zIndex:"999"}}>
                             <span className="badge text-bg-warning">
                               Free Shipping - orders over $100
                             </span>
@@ -354,15 +354,15 @@ const products = [
                               Free Shipping to First-Time Customers Only, After
                               promotions and discounts are applied.
                             </p>
-                            <Link to="/shop" className="btn btn-dark mt-3">
+                            {/* <Link to="/shop" className="btn btn-dark mt-3">
                               Shop Now{" "}
                               <i className="feather-icon icon-arrow-right ms-1" />
-                            </Link>
+                            </Link> */}
                           </div>
                         </div>
                       </div>
-                      <div className="carousel-item">
-                        <div
+                      <div className="carousel-item ">
+                        <div className="bannerstyle"
                           style={{
                             background: `url(${slider3}) no-repeat`,
                             backgroundSize: "cover",
@@ -372,7 +372,7 @@ const products = [
                          
                           }}
                         >
-                          <div className="ps-lg-12 py-lg-16 col-xxl-5 col-md-7 py-14 px-8 text-xs-center" style={{zIndex:"999",marginLeft:"70px"}}>
+                          <div className="ps-lg-12 py-lg-16 col-xxl-5 col-md-7 py-14 px-8 text-xs-center  " style={{zIndex:"999"}}>
                             <span className="badge text-bg-warning">
                               Free Shipping - orders over $100
                             </span>
@@ -384,10 +384,10 @@ const products = [
                               Free Shipping to First-Time Customers Only, After
                               promotions and discounts are applied.
                             </p>
-                            <Link to="/shop" className="btn btn-dark mt-7">
+                            {/* <Link to="/shop" className="btn btn-dark mt-7">
                               Shop Now{" "}
                               <i className="feather-icon icon-arrow-right ms-1" />
-                            </Link>
+                            </Link> */}
                           </div>
                         </div>
                       </div>

@@ -6,10 +6,10 @@ import Swal from "sweetalert2";
 import assortment from "../../assets/pagesimage/stores/assortment-citrus-fruits.png";
 import ScrollToTop from "../../components/Animations/ScrollToTop";
 import allProducts from "./data"; // path relative to Dropdown.jsx
+import { useCart } from "../../context/CartContext";
 
-
-
-function Dropdown() {
+function Shop() {
+  const { addToCart } = useCart();
   // const [openDropdowns, setOpenDropdowns] = useState([]);
   const [loaderStatus, setLoaderStatus] = useState(true);
   const [sortOption, setSortOption] = useState("featured");
@@ -215,7 +215,7 @@ function Dropdown() {
                     "Dairy",
                     "Snacks",
                     "Bakery",
-                    "Fruits",  
+                    "Fruits",
                     "Health & Baby",
                     "Household",
                     "Personal Care",
@@ -310,7 +310,7 @@ function Dropdown() {
                     Products found
                   </p>
                   <div className="d-flex align-items-center gap-2">
-                    <Link to="/ShopListCol" className="text-muted">
+                    {/* <Link to="/ShopListCol" className="text-muted">
                       <i className="bi bi-list-ul" />
                     </Link>
                     <Link to="/ShopGridCol3" className="text-dark">
@@ -318,14 +318,14 @@ function Dropdown() {
                     </Link>
                     <Link to="/Shop" className="text-muted">
                       <i className="bi bi-grid-3x3-gap" />
-                    </Link>
-                    <select className="form-select w-auto">
+                    </Link> */}
+                    {/* <select className="form-select w-auto">
                       <option value="10">10</option>
                       <option value="20">20</option>
                       <option value="50" defaultValue>
                         Show: 50
                       </option>
-                    </select>
+                    </select> */}
                     <select
                       className="form-select w-auto"
                       value={sortOption}
@@ -394,14 +394,19 @@ function Dropdown() {
                                 Category: {product.category}
                               </small>
                               <button
-                                className="btn btn-primary btn-sm"
+                                className="btn btn-primary btn-sm add-to-cart  btn-9"
+                                style={{ zIndex: "999" }}
                                 onClick={(e) => {
+                                  e.preventDefault();
                                   e.stopPropagation();
-                                  Swal.fire(
-                                    "Added to cart",
-                                    product.name,
-                                    "success"
-                                  );
+                                  addToCart(product);
+                                  Swal.fire({
+                                    icon: "success",
+                                    title: "Added to Cart",
+                                    text: `${product.title} has been added to your cart.`,
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                  });
                                 }}
                               >
                                 Add
@@ -636,4 +641,4 @@ function Dropdown() {
 //   },
 // ];
 
-export default Dropdown;
+export default Shop;
