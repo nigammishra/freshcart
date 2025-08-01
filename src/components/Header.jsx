@@ -30,12 +30,16 @@ import {
 } from "react-icons/fa";
 import { GiCakeSlice } from "react-icons/gi";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext"; // Adjust path if needed
+
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { cartItems, removeFromCart } = useCart();
+  const { isAuthenticated, logout } = useAuth();
+const navigate = useNavigate();
 
   const calculateSubtotal = () =>
     cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -330,7 +334,7 @@ const Header = () => {
                   className="dropdown-menu sm-menu"
                   aria-labelledby="navbarDropdown"
                 >
-                  <Link class="dropdown-item" to="/Blog">
+                  <Link className="dropdown-item" to="/Blog">
                     Daliy Blog
                   </Link>
                   {/* <Link className="dropdown-item" to="pages/blog-single.html">
@@ -731,13 +735,26 @@ const Header = () => {
                 </div>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/MyAccountSignIn">
-                  <button class="custom-btn btn-12">
-                    <span>Sign Up</span>
-                    <span>Sign In</span>
-                  </button>
-                </Link>
-              </li>
+  {isAuthenticated ? (
+    <button
+      className="custom-btn btn-12"
+      onClick={() => {
+        logout();
+        navigate("/MyAccountSignIn");
+      }}
+    >
+      <span>Goodbye</span>
+      <span>Logout</span>
+    </button>
+  ) : (
+    <Link className="nav-link" to="/MyAccountSignIn">
+      <button className="custom-btn btn-12">
+        <span>Sign Up</span>
+        <span>Sign In</span>
+      </button>
+    </Link>
+  )}
+</li>
 
               {/* <li className="nav-item">
                 <Link className="nav-link" to="">

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import QuickViewModal from "./Model/QuickViewModal";
 import { useCart } from "../context/CartContext";
 import Swal from "sweetalert2";
+import { useAuth } from "../context/AuthContext"; // ✅ Add this import
+import { useNavigate } from "react-router-dom"; 
 // import { Link } from "react-router-dom";
 
 import product1 from "../assets/pagesimage/home/category-snack-munchies.jpg";
@@ -89,6 +91,9 @@ const ProductItem = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showAll, setShowAll] = useState(false);
+  // Inside the component
+const { isAuthenticated } = useAuth();
+const navigate = useNavigate();
 
   const handleQuickView = (product) => {
     setSelectedProduct(product);
@@ -197,21 +202,23 @@ const ProductItem = () => {
                       </div>
                       <div>
                         <button
-                          className="btn btn-primary btn-sm add-to-cart  btn-9"
-                          // onClick={handleAddClick}
-                          style={{ zIndex: "999" }}
-                          // onClick={() => handleQuickView(product)}
+                          className="btn btn-primary btn-sm add-to-cart btn-9"
+                          style={{zIndex:"999"}}
                           onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            addToCart(product);
-                            Swal.fire({
-                              icon: "success",
-                              title: "Added to Cart",
-                              text: `${product.title} has been added to your cart.`,
-                              showConfirmButton: false,
-                              timer: 1500,
-                            });
+                            if (!isAuthenticated) {
+                              navigate("/MyAccountSignIn"); // 🔁 Redirect to SignIn if not logged in
+                            } else {
+                              addToCart(product); // ✅ Add to cart
+                              Swal.fire({
+                                icon: "success",
+                                title: "Added to Cart",
+                                text: `${product.title} has been added to your cart.`,
+                                showConfirmButton: false,
+                                timer: 1500,
+                              });
+                            }
                           }}
                         >
                           <i className="fas fa-cart-plus"></i> Add

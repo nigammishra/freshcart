@@ -8,8 +8,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProductShow from "./components/Animations/ProductShow.jsx";
 import Header from "./components/Header.jsx";
 
-// About pages
-
 // Shop pages
 import Shop from "./pages/shopItems/Shop.jsx";
 import ShopGridCol3 from "./pages/shopItems/ShopComponents/ShopGridCol3.jsx";
@@ -44,28 +42,23 @@ import Coupons from "./components/FooterElements/Coupons.jsx";
 import HelpCenter from "./components/FooterElements/HelpCenter.jsx";
 import Footer from "./components/Footer.jsx";
 
-// Other Product Showing UI Effects and Animations
+// Other
 import Home from "./pages/Home.jsx";
 
-
-
-// Category pages 
-
-
-
+// Category pages
 import Bakery from "./components/category/Bakery.jsx";
 import BabyCare from "./components/category/BabyCare.jsx";
-// import Berverages from "./components/category/Berverages.jsx";
 import Dairy from "./components/category/Dairy.jsx";
 import Fruits from "./components/category/Fruits.jsx";
 import Vegetables from "./components/category/Vegetables.jsx";
 import HouseHold from "./components/category/HouseHold.jsx";
 import MeatAndEggs from "./components/category/MeatAndEggs.jsx";
-// import PetCare from "./components/category/PetCare.jsx";
 import Snacks from "./components/category/Snacks.jsx";
 import InstantsFood from "./components/category/InstantsFood.jsx";
 import FoodGrainAndOilAndMasala from "./components/category/FoodGrainAndOilAndMasala.jsx";
 
+// 🔒 Auth-protected route wrapper
+import PrivateRoute from "./context/PrivateRoute.jsx"; // ✅ Create this component
 
 const App = () => {
   return (
@@ -73,55 +66,47 @@ const App = () => {
       <Router>
         <Header />
         <Routes>
+          {/* Public routes */}
           <Route path="/" element={<Home />} />
           <Route path="/freshcart" element={<Home />} />
-          {/* Shop pages */}
-          <Route path="/Shop" element={<Shop />} />
-          <Route path="/ShopGridCol3" element={<ShopGridCol3 />} />
-          <Route path="/ShopListCol" element={<ShopListCol />} />
-          <Route path="/ShopWishList" element={<ShopWishList />} />
-          <Route path="/ShopCheckOut" element={<ShopCheckOut />} />
-          <Route path="/ShopCart" element={<ShopCart />} />
-          {/* Store pages */}
-          <Route path="/StoreList" element={<StoresDetails />} />
-          <Route path="/SingleShop" element={<SingleStore />} />
-          {/* Accounts pages */}
-          <Route path="/MyAccountOrder" element={<OrderHistory />} />
-          <Route path="/MyAccountSetting" element={<Settings />} />
-          <Route path="/MyAcconutNotification" element={<Notification />} />
-          <Route path="/MyAcconutPaymentMethod" element={<PaymentMethod />} />
-          <Route path="/MyAccountAddress" element={<Address />} />
-          <Route path="/MyAccountForgetPassword" element={<ForgotPassword />} />
           <Route path="/MyAccountSignIn" element={<SignIn />} />
           <Route path="/MyAccountSignUp" element={<SignUp />} />
-          {/* About pages */}
+          <Route path="/MyAccountForgetPassword" element={<ForgotPassword />} />
           <Route path="/Blog" element={<BlogCategories />} />
-          {/* <Route path="/BlogCategory" element={<BlogCategory />} /> */}
           <Route path="/Contact" element={<Contacts />} />
           <Route path="/AboutUs" element={<Abouts />} />
-          {/* Footer Elements */}
           <Route path="/Faq" element={<FAQ />} />
           <Route path="/Coupons" element={<Coupons />} />
           <Route path="/Careers" element={<Careers />} />
           <Route path="/helpcenter" element={<HelpCenter />} />
-          {/* Other Product Showing UI Effects and Animations*/}
           <Route path="/productShow" element={<ProductShow />} />
-          {/* category pages */}
+          <Route path="/StoreList" element={<StoresDetails />} />
+          <Route path="/SingleShop" element={<SingleStore />} />
 
-          <Route path="/bakery" element={<Bakery />} />
-          <Route path="/babyCare" element={<BabyCare />} />
-          {/* <Route path="/berverages" element={<Berverages />} /> */}
-          <Route path="/dairy" element={<Dairy />} />
-          <Route path="/fruits" element={<Fruits />} />
-          <Route path="/household" element={<HouseHold />} />
-          <Route path="/meatandeggs" element={<MeatAndEggs />} />
-          {/* <Route path="/petCare" element={<PetCare />} /> */}
-          <Route path="/snacks" element={<Snacks />} />
-          <Route path="/vegetables" element={<Vegetables />} />
-          <Route path="/instantsfood" element={<InstantsFood />} />
-          <Route path="/riceandoilandmasala" element={<FoodGrainAndOilAndMasala />} />
-          
-          
+           {/* 🔒 Protected Category pages */}
+      <Route path="/bakery" element={<PrivateRoute><Bakery /></PrivateRoute>} />
+      <Route path="/babyCare" element={<PrivateRoute><BabyCare /></PrivateRoute>} />
+      <Route path="/dairy" element={<PrivateRoute><Dairy /></PrivateRoute>} />
+      <Route path="/fruits" element={<PrivateRoute><Fruits /></PrivateRoute>} />
+      <Route path="/household" element={<PrivateRoute><HouseHold /></PrivateRoute>} />
+      <Route path="/meatandeggs" element={<PrivateRoute><MeatAndEggs /></PrivateRoute>} />
+      <Route path="/snacks" element={<PrivateRoute><Snacks /></PrivateRoute>} />
+      <Route path="/vegetables" element={<PrivateRoute><Vegetables /></PrivateRoute>} />
+      <Route path="/instantsfood" element={<PrivateRoute><InstantsFood /></PrivateRoute>} />
+      <Route path="/riceandoilandmasala" element={<PrivateRoute><FoodGrainAndOilAndMasala /></PrivateRoute>} />
+
+          {/* 🔒 Protected Routes (require sign in) */}
+          <Route path="/Shop" element={<PrivateRoute><Shop /></PrivateRoute>} />
+          <Route path="/ShopGridCol3" element={<PrivateRoute><ShopGridCol3 /></PrivateRoute>} />
+          <Route path="/ShopListCol" element={<PrivateRoute><ShopListCol /></PrivateRoute>} />
+          <Route path="/ShopWishList" element={<PrivateRoute><ShopWishList /></PrivateRoute>} />
+          <Route path="/ShopCheckOut" element={<PrivateRoute><ShopCheckOut /></PrivateRoute>} />
+          <Route path="/ShopCart" element={<PrivateRoute><ShopCart /></PrivateRoute>} />
+          <Route path="/MyAccountOrder" element={<PrivateRoute><OrderHistory /></PrivateRoute>} />
+          <Route path="/MyAccountSetting" element={<PrivateRoute><Settings /></PrivateRoute>} />
+          <Route path="/MyAcconutNotification" element={<PrivateRoute><Notification /></PrivateRoute>} />
+          <Route path="/MyAcconutPaymentMethod" element={<PrivateRoute><PaymentMethod /></PrivateRoute>} />
+          <Route path="/MyAccountAddress" element={<PrivateRoute><Address /></PrivateRoute>} />
         </Routes>
         <Footer />
       </Router>
