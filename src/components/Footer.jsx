@@ -312,7 +312,7 @@ const Footer = () => {
                   © {year} All Rights Reserved By _
                   
                   <Link
-                    to="https://nigammishra.github.io/nigam-portfolio/"
+                    to="https://nigammishra.github.io/FrontendAce/"
                     target="_blank"
                   >
                      @nigammishra

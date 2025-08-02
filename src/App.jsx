@@ -107,6 +107,8 @@ const App = () => {
           <Route path="/MyAcconutNotification" element={<PrivateRoute><Notification /></PrivateRoute>} />
           <Route path="/MyAcconutPaymentMethod" element={<PrivateRoute><PaymentMethod /></PrivateRoute>} />
           <Route path="/MyAccountAddress" element={<PrivateRoute><Address /></PrivateRoute>} />
+          <Route path="/StoreList" element={<PrivateRoute><StoresDetails /></PrivateRoute>} />
+          <Route path="/SingleShop" element={<PrivateRoute><SingleStore /></PrivateRoute>} /> 
         </Routes>
         <Footer />
       </Router>
