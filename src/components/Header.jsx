@@ -34,21 +34,25 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext"; // Adjust path if needed
 
-
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { cartItems, removeFromCart } = useCart();
   const { isAuthenticated, logout } = useAuth();
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
+   const handleGoToCheckout = () => {
+    setIsOpen(false); // Close the offcanvas
+    navigate("/ShopCheckOut"); // Navigate
+  };
+
 
   const calculateSubtotal = () =>
     cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
- // Total item count (quantity-wise)
+  // Total item count (quantity-wise)
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
-
 
   return (
     <div>
@@ -119,40 +123,40 @@ const navigate = useNavigate();
                         </svg>
                       </Link>
                     </div>
-                     <div className="list-inline-item">
-      <Link
-        className="text-muted position-relative"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasRight"
-        to="#"
-        role="button"
-        aria-controls="offcanvasRight"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width={20}
-          height={20}
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="feather feather-shopping-bag"
-        >
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-          <line x1={3} y1={6} x2={21} y2={6} />
-          <path d="M16 10a4 4 0 0 1-8 0" />
-        </svg>
+                    <div className="list-inline-item">
+                      <Link
+                        className="text-muted position-relative"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight"
+                        to="#"
+                        role="button"
+                        aria-controls="offcanvasRight"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width={20}
+                          height={20}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="feather feather-shopping-bag"
+                        >
+                          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                          <line x1={3} y1={6} x2={21} y2={6} />
+                          <path d="M16 10a4 4 0 0 1-8 0" />
+                        </svg>
 
-        {totalItems > 0 && (
-          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-            {totalItems}
-            <span className="visually-hidden">cart items</span>
-          </span>
-        )}
-      </Link>
-    </div>
+                        {totalItems > 0 && (
+                          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                            {totalItems}
+                            <span className="visually-hidden">cart items</span>
+                          </span>
+                        )}
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -420,10 +424,7 @@ const navigate = useNavigate();
                       <Link className="dropdown-item" to="/household">
                         <FaHome className="icon" /> Household
                       </Link>
-                      <Link
-                        className="dropdown-item "
-                        to="/meatandeggs"
-                      >
+                      <Link className="dropdown-item " to="/meatandeggs">
                         <FaEarlybirds className="icon" />
                         Meat & Eggs
                       </Link>
@@ -735,26 +736,26 @@ const navigate = useNavigate();
                 </div>
               </li>
               <li className="nav-item">
-  {isAuthenticated ? (
-    <button
-      className="custom-btn btn-12"
-      onClick={() => {
-        logout();
-        navigate("/MyAccountSignIn");
-      }}
-    >
-      <span>Goodbye</span>
-      <span>Logout</span>
-    </button>
-  ) : (
-    <Link className="nav-link" to="/MyAccountSignIn">
-      <button className="custom-btn btn-12">
-        <span>Sign Up</span>
-        <span>Sign In</span>
-      </button>
-    </Link>
-  )}
-</li>
+                {isAuthenticated ? (
+                  <button
+                    className="custom-btn btn-12"
+                    onClick={() => {
+                      logout();
+                      navigate("/MyAccountSignIn");
+                    }}
+                  >
+                    <span>Goodbye</span>
+                    <span>Logout</span>
+                  </button>
+                ) : (
+                  <Link className="nav-link" to="/MyAccountSignIn">
+                    <button className="custom-btn btn-12">
+                      <span>Sign Up</span>
+                      <span>Sign In</span>
+                    </button>
+                  </Link>
+                )}
+              </li>
 
               {/* <li className="nav-item">
                 <Link className="nav-link" to="">
@@ -849,99 +850,108 @@ const navigate = useNavigate();
               </div>
             </div>
           </div>
-         <div
-      className="offcanvas offcanvas-end"
-      tabIndex={-1}
-      id="offcanvasRight"
-      aria-labelledby="offcanvasRightLabel"
-    >
-      <div className="offcanvas-header border-bottom">
-        <div className="text-start">
-          <h5 id="offcanvasRightLabel" className="mb-0 fs-4">
-            Shop Cart
-          </h5>
-          <small>Location in 382480</small>
-        </div>
-        <button
-          type="button"
-          className="btn-close text-reset"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        />
-      </div>
-
-      <div className="offcanvas-body">
-        <div className="alert alert-danger" role="alert">
-          You’ve got FREE delivery. Start checkout now!
-        </div>
-
-        {cartItems.length === 0 ? (
-          <div className="text-center text-muted py-5">Your cart is empty.</div>
-        ) : (
-          <>
-            <ul className="list-group list-group-flush py-3">
-              {cartItems.map((item) => (
-                <li
-                  className="list-group-item py-3 px-0 border-bottom"
-                  key={item.id}
-                >
-                  <div className="row align-items-center">
-                    <div className="col-2">
-                      <img src={item.image} alt={item.title} className="img-fluid" />
-                    </div>
-                    <div className="col-5">
-                      <h6 className="mb-0">{item.title}</h6>
-                      <small className="text-muted">Qty: {item.quantity}</small>
-                      <div className="mt-2 small">
-                        <button
-                          onClick={() => removeFromCart(item.id)}
-                          className="btn btn-link p-0 text-danger"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width={16}
-                            height={16}
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="feather feather-trash-2 me-1"
-                          >
-                            <polyline points="3 6 5 6 21 6" />
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                            <line x1={10} y1={11} x2={10} y2={17} />
-                            <line x1={14} y1={11} x2={14} y2={17} />
-                          </svg>
-                          Remove
-                        </button>
-                      </div>
-                    </div>
-                    <div className="col-3 text-center">
-                      <span className="fw-bold">₹{item.price}</span>
-                    </div>
-                    <div className="col-2 text-end">
-                      <span className="text-muted small">x{item.quantity}</span>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-
-            <div className="d-grid mt-4">
-              <Link
-                to="/ShopCheckOut"
-                className="btn btn-primary btn-lg d-flex justify-content-between align-items-center"
-              >
-                Go to Checkout{" "}
-                <span className="fw-bold">₹{calculateSubtotal()}</span>
-              </Link>
+          <div
+            className="offcanvas offcanvas-end"
+            tabIndex={-1}
+            id="offcanvasRight"
+            aria-labelledby="offcanvasRightLabel"
+          >
+            <div className="offcanvas-header border-bottom">
+              <div className="text-start">
+                <h5 id="offcanvasRightLabel" className="mb-0 fs-4">
+                  Shop Cart
+                </h5>
+                <small>Location in 382480</small>
+              </div>
+              <button
+                type="button"
+                className="btn-close text-reset"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              />
             </div>
-          </>
-        )}
-      </div>
-    </div>
+
+            <div className="offcanvas-body">
+              <div className="alert alert-danger" role="alert">
+                You’ve got FREE delivery. Start checkout now!
+              </div>
+
+              {cartItems.length === 0 ? (
+                <div className="text-center text-muted py-5">
+                  Your cart is empty.
+                </div>
+              ) : (
+                <>
+                  <ul className="list-group list-group-flush py-3">
+                    {cartItems.map((item) => (
+                      <li
+                        className="list-group-item py-3 px-0 border-bottom"
+                        key={item.id}
+                      >
+                        <div className="row align-items-center">
+                          <div className="col-2">
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              className="img-fluid"
+                            />
+                          </div>
+                          <div className="col-5">
+                            <h6 className="mb-0">{item.title}</h6>
+                            <small className="text-muted">
+                              Qty: {item.quantity}
+                            </small>
+                            <div className="mt-2 small">
+                              <button
+                                onClick={() => removeFromCart(item.id)}
+                                className="btn btn-link p-0 text-danger"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width={16}
+                                  height={16}
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth={2}
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="feather feather-trash-2 me-1"
+                                >
+                                  <polyline points="3 6 5 6 21 6" />
+                                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                  <line x1={10} y1={11} x2={10} y2={17} />
+                                  <line x1={14} y1={11} x2={14} y2={17} />
+                                </svg>
+                                Remove
+                              </button>
+                            </div>
+                          </div>
+                          <div className="col-3 text-center">
+                            <span className="fw-bold">₹{item.price}</span>
+                          </div>
+                          <div className="col-2 text-end">
+                            <span className="text-muted small">
+                              x{item.quantity}
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="d-grid mt-4">
+                     <button
+                  onClick={handleGoToCheckout}
+                  className="btn btn-primary btn-lg d-flex justify-content-between align-items-center w-100"
+                >
+                  Go to Checkout <span className="fw-bold">₹{calculateSubtotal()}</span>
+                </button>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
           {/* Modal */}
           <div
             className="modal fade"

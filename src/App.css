@@ -30335,10 +30335,13 @@ img.img-fluid:hover {
 /* .nav-item{
   padding-left: 15px;
 } */
-
+.bannerstyle{
+  height: 550px;
+}
 @media (max-width: 768px) {
   .bannerstyle {
     height: 400px;
+    object-fit: contain;
   }
 }
 

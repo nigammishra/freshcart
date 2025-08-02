@@ -1,7 +1,7 @@
 import slider1 from "../assets/pagesimage/home/slide-1.jpg";
 import abouticon from "../assets/pagesimage/home/about-icons-1.svg";
 import slider2 from "../assets/pagesimage/home/slider-2.jpg";
-import slider3 from '../assets/pagesimage/home/bannerimage1.png'
+import slider3 from '../assets/pagesimage/home/slider-3.jpg'
 import adbanner1 from "../assets/pagesimage/home/ad-banner-1.jpg";
 import adbanner2 from "../assets/pagesimage/home/ad-banner-2.jpg";
 import adbanner3 from "../assets/pagesimage/home/ad-banner-3.jpg";
@@ -306,7 +306,37 @@ const products = [
                     data-bs-interval="3000" // ← this enables auto-slide
                   >
                     <div className="carousel-inner">
-                      <div className="carousel-item active">
+                       <div className="carousel-item active ">
+                        <div className="bannerstyle"
+                          style={{
+                            background: `url(${slider3}) no-repeat`,
+                            backgroundSize: "cover",
+                            borderRadius: ".5rem",
+                            backgroundPosition: "center",
+                            
+                         
+                          }}
+                        >
+                          <div className="ps-lg-12 py-lg-16 col-xxl-5 col-md-7 py-14 px-8 text-xs-center  " style={{zIndex:"999"}}>
+                            <span className="badge text-bg-warning">
+                              {/* Free Shipping - orders over $100 */}
+                            </span>
+                            <h2 className="text-dark display-5 fw-bold mt-4">
+                              {/* Free Shipping on <br /> orders over{" "} */}
+                              {/* <span className="text-primary">$100</span> */}
+                            </h2>
+                            <p className="lead" style={{color:"#fff"}}>
+                              {/* Free Shipping to First-Time Customers Only, After
+                              promotions and discounts are applied. */}
+                            </p>
+                            {/* <Link to="/shop" className="btn btn-dark mt-7">
+                              Shop Now{" "}
+                              <i className="feather-icon icon-arrow-right ms-1" />
+                            </Link> */}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="carousel-item ">
                         <div
                           style={{
                             background: `url(${slider1}) no-repeat`,
@@ -361,36 +391,7 @@ const products = [
                           </div>
                         </div>
                       </div>
-                      <div className="carousel-item ">
-                        <div className="bannerstyle"
-                          style={{
-                            background: `url(${slider3}) no-repeat`,
-                            backgroundSize: "cover",
-                            borderRadius: ".5rem",
-                            backgroundPosition: "center",
-                            
-                         
-                          }}
-                        >
-                          <div className="ps-lg-12 py-lg-16 col-xxl-5 col-md-7 py-14 px-8 text-xs-center  " style={{zIndex:"999"}}>
-                            <span className="badge text-bg-warning">
-                              Free Shipping - orders over $100
-                            </span>
-                            <h2 className="text-dark display-5 fw-bold mt-4">
-                              Free Shipping on <br /> orders over{" "}
-                              <span className="text-primary">$100</span>
-                            </h2>
-                            <p className="lead" style={{color:"#fff"}}>
-                              Free Shipping to First-Time Customers Only, After
-                              promotions and discounts are applied.
-                            </p>
-                            {/* <Link to="/shop" className="btn btn-dark mt-7">
-                              Shop Now{" "}
-                              <i className="feather-icon icon-arrow-right ms-1" />
-                            </Link> */}
-                          </div>
-                        </div>
-                      </div>
+                     
                     </div>
                     <Link
                       className="carousel-control-prev"
