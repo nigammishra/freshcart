@@ -221,7 +221,8 @@ const navigate = useNavigate();
                             }
                           }}
                         >
-                          <i className="fas fa-cart-plus"></i> Add
+                          <i className="fas fa-cart-plus bounce-cart-icon"></i> Add
+
                         </button>
                       </div>
                     </div>

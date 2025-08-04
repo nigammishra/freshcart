@@ -30862,3 +30862,16 @@ background: linear-gradient(0deg, rgb(32 238 0) 0%, rgb(31 164 0) 100%);
 .vegetable-product-links a:hover {
   color: #fbb72c;
 }
+
+@keyframes cart-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.bounce-cart-icon {
+  animation: cart-bounce 1s infinite;
+}
