@@ -1,6 +1,17 @@
 html {
   scroll-behavior: smooth;
 }
+/* Works across all modern browsers */
+body {
+  overflow-y: scroll;              /* Keep scroll functionality */
+  -ms-overflow-style: none;       /* IE & Edge */
+  scrollbar-width: none;          /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;                  /* Chrome, Safari, Opera */
+}
+
 
 .border-top {
   border-top: var(--bs-border-width) var(--bs-border-style)
@@ -30364,7 +30375,7 @@ img.img-fluid:hover {
   transform: perspective(1200px) rotateX(2deg) rotateY(2deg);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 
-  background: url("https://as1.ftcdn.net/jpg/05/54/53/16/1000_F_554531643_EBuo959q4LQeHswzyatxWpEZLnS4HQAg.jpg") center/cover no-repeat;
+  background: url("./assets/pagesimage/accountimage/sign-bg.webp") center/cover no-repeat;
 }
 
 .body-style::before {
@@ -30428,9 +30439,12 @@ img.img-fluid:hover {
     height: 100%;
   
     /* Food-themed background */
-    background: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-      center/cover no-repeat;
-    background-color: #00000080;
+    /* background: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+      center/cover no-repeat; */
+    background: linear-gradient(135deg, #a8ff78, #78ffd6);
+
+
+    /* background-color: #00000080; */
     background-blend-mode: overlay;
   
     z-index: 1000;
@@ -30494,7 +30508,7 @@ img.img-fluid:hover {
 }
 .formBx .form form h3 {
   font-size: 1.5em;
-  color: #ffffff;
+  color: #000;
   margin-bottom: 20px;
   font-weight: 500;
   font-family: cursive;
@@ -30504,14 +30518,14 @@ img.img-fluid:hover {
   margin-bottom: 20px;
   outline: none; 
   padding: 10px;
-  border: 1px solid #e3e3e3;
+  border: 1px solid #000;
   border-radius: 10px;
   background: transparent;
-  color: white;
+  color: #000;
   padding: 10px; 
 }
 .formBx .form input::placeholder {
-    color: white;
+    color: #000;
     opacity: 1; /* ensures full visibility */
   }
   
@@ -30537,7 +30551,7 @@ img.img-fluid:hover {
   }
   
 .formBx .form form .forgot {
-  color: #ffffff;
+  color: #000;
   text-decoration: none;
 }
 .formBx .social {

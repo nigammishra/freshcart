@@ -60,16 +60,28 @@ const Signin = () => {
         </div>
       ) : (
         <>
-          <div className="container">
-            <div className="row mt-5">
-              <div className="col-12">
-                <h1 className="section-title">Welcome Back to FreshCart!</h1>
-                <p className="section-description">
-                  Sign in to manage your grocery orders, track deliveries, and access exclusive offers tailored for you.
-                </p>
-              </div>
-            </div>
-          </div>
+          <div
+  className="py-5"
+  style={{
+    background: "linear-gradient(135deg, #a8ff78, #78ffd6)",
+    color: "#1a1a1a",
+    // borderBottomLeftRadius: "2rem",
+    // borderBottomRightRadius: "2rem",
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+  }}
+>
+  <div className="container">
+    <div className="row align-items-center mt-3">
+      <div className="col-12 text-center">
+        <h1 className="fw-bold display-5 mb-3">Welcome Back to <span style={{ color: "#00704A" }}>FreshCart!</span></h1>
+        <p className="lead">
+          Sign in to manage your grocery orders, track deliveries, and access exclusive offers tailored for you.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
           <div className="container">
             <div className="body-style">

@@ -40,11 +40,10 @@ const Header = () => {
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
 
-   const handleGoToCheckout = () => {
+  const handleGoToCheckout = () => {
     setIsOpen(false); // Close the offcanvas
     navigate("/ShopCheckOut"); // Navigate
   };
-
 
   const calculateSubtotal = () =>
     cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -53,6 +52,16 @@ const Header = () => {
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+  
+  
+  const handleNavItemClick = () => {
+  const nav = document.getElementById("mobile_nav");
+  if (nav && nav.classList.contains("show")) {
+    nav.classList.remove("show");
+  }
+  setIsOpen(false); // Reset hamburger animation
+};
+
 
   return (
     <div>
@@ -302,12 +311,12 @@ const Header = () => {
             aria-label="Toggle navigation"
           >
             <div
-              className={`containerr ${isOpen ? "change" : ""}`}
+              className={`hamburger-icon ${isOpen ? "change" : ""}`}
               onClick={handleClick}
             >
-              <div className="bar1"></div>
-              <div className="bar2"></div>
-              <div className="bar3"></div>
+              <div className="bar bar1"></div>
+              <div className="bar bar2"></div>
+              <div className="bar bar3"></div>
             </div>
           </button>
 
@@ -318,7 +327,11 @@ const Header = () => {
               style={{ justifyContent: "center", alignItems: "center" }}
             >
               <li className="nav-item">
-                <Link className="nav-link" to="/freshcart">
+                <Link
+                  className="nav-link"
+                   onClick={handleNavItemClick}
+                  to="/freshcart"
+                >
                   Home
                 </Link>
               </li>
@@ -331,6 +344,7 @@ const Header = () => {
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
+                   
                 >
                   About
                 </Link>
@@ -338,7 +352,7 @@ const Header = () => {
                   className="dropdown-menu sm-menu"
                   aria-labelledby="navbarDropdown"
                 >
-                  <Link className="dropdown-item" to="/Blog">
+                  <Link className="dropdown-item" to="/Blog" onClick={handleNavItemClick}>
                     Daliy Blog
                   </Link>
                   {/* <Link className="dropdown-item" to="pages/blog-single.html">
@@ -347,13 +361,13 @@ const Header = () => {
                   {/* <Link className="dropdown-item" to="/BlogCategory">
                 Blog Category
               </Link> */}
-                  <Link className="dropdown-item" to="/AboutUs">
+                  <Link className="dropdown-item" to="/AboutUs" onClick={handleNavItemClick}>
                     About us
                   </Link>
                   {/* <Link className="dropdown-item" to="pages/404error.html">
                     404 Error
                   </Link> */}
-                  <Link className="dropdown-item" to="/Contact">
+                  <Link className="dropdown-item" to="/Contact" onClick={handleNavItemClick}>
                     Contact
                   </Link>
                 </div>
@@ -367,6 +381,7 @@ const Header = () => {
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
+                  
                 >
                   <span className="me-1">
                     <svg
@@ -398,16 +413,16 @@ const Header = () => {
                   </h6>
                   <div className="row">
                     <div className="col-6">
-                      <Link className="dropdown-item" to="/vegetables">
+                      <Link className="dropdown-item" to="/vegetables" onClick={handleNavItemClick}>
                         <FaCarrot className="icon" /> Vegetables
                       </Link>
-                      <Link className="dropdown-item" to="/fruits">
+                      <Link className="dropdown-item" to="/fruits" onClick={handleNavItemClick}>
                         <FaAppleAlt className="icon" /> Fruits
                       </Link>
-                      <Link className="dropdown-item" to="/dairy">
+                      <Link className="dropdown-item" to="/dairy" onClick={handleNavItemClick}>
                         <FaCheese className="icon" /> Dairy
                       </Link>
-                      <Link className="dropdown-item" to="/snacks">
+                      <Link className="dropdown-item" to="/snacks" onClick={handleNavItemClick}>
                         <FaCookieBite className="icon" /> Snacks
                       </Link>
                       {/* <Link className="dropdown-item" to="/berverages">
@@ -418,18 +433,18 @@ const Header = () => {
                       {/* <Link className="dropdown-item" to="/petCare">
             <FaPumpSoap className="icon" /> PetCare  
           </Link> */}
-                      <Link className="dropdown-item" to="/bakery">
+                      <Link className="dropdown-item" to="/bakery" onClick={handleNavItemClick}>
                         <GiCakeSlice className="icon" /> Bakery
                       </Link>
-                      <Link className="dropdown-item" to="/household">
+                      <Link className="dropdown-item" to="/household" onClick={handleNavItemClick}>
                         <FaHome className="icon" /> Household
                       </Link>
-                      <Link className="dropdown-item " to="/meatandeggs">
+                      <Link className="dropdown-item " to="/meatandeggs" onClick={handleNavItemClick}>
                         <FaEarlybirds className="icon" />
                         Meat & Eggs
                       </Link>
 
-                      <Link className="dropdown-item" to="/babyCare">
+                      <Link className="dropdown-item" to="/babyCare" onClick={handleNavItemClick}>
                         <FaBaby className="icon" /> Baby Care
                       </Link>
                     </div>
@@ -446,6 +461,7 @@ const Header = () => {
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
+                  
                 >
                   Shop
                 </Link>
@@ -453,16 +469,16 @@ const Header = () => {
                   className="dropdown-menu sm-menu"
                   aria-labelledby="navbarDropdown"
                 >
-                  <Link className="dropdown-item" to="/Shop">
+                  <Link className="dropdown-item" to="/Shop" onClick={handleNavItemClick}>
                     Shop
                   </Link>
-                  <Link className="dropdown-item" to="/ShopWishList">
+                  <Link className="dropdown-item" to="/ShopWishList" onClick={handleNavItemClick}>
                     Shop Wishlist
                   </Link>
-                  <Link className="dropdown-item" to="/ShopCart">
+                  <Link className="dropdown-item" to="/ShopCart" onClick={handleNavItemClick}>
                     Shop Cart
                   </Link>
-                  <Link className="dropdown-item" to="/ShopCheckOut">
+                  <Link className="dropdown-item" to="/ShopCheckOut" onClick={handleNavItemClick}>
                     Shop Checkout
                   </Link>
                 </div>
@@ -496,7 +512,7 @@ const Header = () => {
             </div>
           </li> */}
               <li className="nav-item">
-                <Link className="nav-link" to="/StoreList">
+                <Link className="nav-link" to="/StoreList" onClick={handleNavItemClick}>
                   Stores Details
                 </Link>
               </li>
@@ -695,6 +711,7 @@ const Header = () => {
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
+                  
                 >
                   Account
                 </Link>
@@ -704,19 +721,19 @@ const Header = () => {
                 >
                   {/* Order Settings */}
                   <h6 className="dropdown-header">Order Settings</h6>
-                  <Link className="dropdown-item" to="/MyAccountOrder">
+                  <Link className="dropdown-item" to="/MyAccountOrder" onClick={handleNavItemClick}>
                     <FaBoxOpen className="me-2" /> Orders
                   </Link>
-                  <Link className="dropdown-item" to="/MyAccountSetting">
+                  <Link className="dropdown-item" to="/MyAccountSetting" onClick={handleNavItemClick}>
                     <FaCogs className="me-2" /> Settings
                   </Link>
-                  <Link className="dropdown-item" to="/MyAccountAddress">
+                  <Link className="dropdown-item" to="/MyAccountAddress" onClick={handleNavItemClick}>
                     <FaMapMarkedAlt className="me-2" /> Address
                   </Link>
-                  <Link className="dropdown-item" to="/MyAcconutPaymentMethod">
+                  <Link className="dropdown-item" to="/MyAcconutPaymentMethod" onClick={handleNavItemClick}>
                     <FaCreditCard className="me-2" /> Payment Method
                   </Link>
-                  <Link className="dropdown-item" to="/MyAcconutNotification">
+                  <Link className="dropdown-item" to="/MyAcconutNotification" onClick={handleNavItemClick}>
                     <FaBell className="me-2" /> Notification
                   </Link>
 
@@ -724,13 +741,13 @@ const Header = () => {
 
                   {/* Account Settings */}
                   <h6 className="dropdown-header">Account Settings</h6>
-                  <Link className="dropdown-item" to="/MyAccountSignIn">
+                  <Link className="dropdown-item" to="/MyAccountSignIn" onClick={handleNavItemClick}>
                     <FaSignInAlt className="me-2" /> Sign in
                   </Link>
-                  <Link className="dropdown-item" to="/MyAccountSignIn">
+                  <Link className="dropdown-item" to="/MyAccountSignIn" onClick={handleNavItemClick}>
                     <FaUserPlus className="me-2" /> Signup
                   </Link>
-                  <Link className="dropdown-item" to="/MyAccountForgetPassword">
+                  <Link className="dropdown-item" to="/MyAccountForgetPassword" onClick={handleNavItemClick}>
                     <FaKey className="me-2" /> Forgot Password
                   </Link>
                 </div>
@@ -941,12 +958,13 @@ const Header = () => {
                   </ul>
 
                   <div className="d-grid mt-4">
-                     <button
-                  onClick={handleGoToCheckout}
-                  className="btn btn-primary btn-lg d-flex justify-content-between align-items-center w-100"
-                >
-                  Go to Checkout <span className="fw-bold">₹{calculateSubtotal()}</span>
-                </button>
+                    <button
+                      onClick={handleGoToCheckout}
+                      className="btn btn-primary btn-lg d-flex justify-content-between align-items-center w-100"
+                    >
+                      Go to Checkout{" "}
+                      <span className="fw-bold">₹{calculateSubtotal()}</span>
+                    </button>
                   </div>
                 </>
               )}
