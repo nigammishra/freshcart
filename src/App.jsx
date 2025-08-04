@@ -47,6 +47,7 @@ import Home from "./pages/Home.jsx";
 
 // Category pages
 import Bakery from "./components/category/Bakery.jsx";
+import Berverages from "./components/category/Berverages.jsx";
 import BabyCare from "./components/category/BabyCare.jsx";
 import Dairy from "./components/category/Dairy.jsx";
 import Fruits from "./components/category/Fruits.jsx";
@@ -85,6 +86,7 @@ const App = () => {
 
            {/* 🔒 Protected Category pages */}
       <Route path="/bakery" element={<PrivateRoute><Bakery /></PrivateRoute>} />
+      <Route path="/berverages" element={<PrivateRoute><Berverages /></PrivateRoute>} />
       <Route path="/babyCare" element={<PrivateRoute><BabyCare /></PrivateRoute>} />
       <Route path="/dairy" element={<PrivateRoute><Dairy /></PrivateRoute>} />
       <Route path="/fruits" element={<PrivateRoute><Fruits /></PrivateRoute>} />

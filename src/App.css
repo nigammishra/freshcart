@@ -1,16 +1,26 @@
 html {
   scroll-behavior: smooth;
 }
-/* Works across all modern browsers */
-body {
-  overflow-y: scroll;              /* Keep scroll functionality */
-  -ms-overflow-style: none;       /* IE & Edge */
-  scrollbar-width: none;          /* Firefox */
+
+/* Chrome, Edge, Safari */
+body::-webkit-scrollbar {
+  width: 10px;
 }
 
-body::-webkit-scrollbar {
-  display: none;                  /* Chrome, Safari, Opera */
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
+
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #a8ff78, #78ffd6); /* Green gradient */
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #4CAF50; /* Darker green on hover */
+}
+
+ 
 
 
 .border-top {
